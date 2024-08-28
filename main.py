@@ -17,7 +17,14 @@ def mode_selection() -> str:
             print("Ungültige Eingabe!")
     return mode
 
-
+def prefix_input() -> str:
+    """
+    Prompts the user to enter a prefix.
+    Returns:
+    str: The entered prefix.
+    """
+    prefix: str = input("Präfix eingeben: ")
+    return prefix
 
 if __name__=="__main__":
     modus:str = mode_selection()
