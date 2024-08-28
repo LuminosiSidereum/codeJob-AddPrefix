@@ -10,7 +10,10 @@ def mode_selection() -> str:
     """
     mode_selection: bool = True
     while mode_selection:
-        mode: str = input("Modus auswählen: 0 für Präfix einfügen; 1 für Präfix ändern: ")
+        modelist: list[str] = ["0: Präfix hinzufügen","1: Präfix ändern"]
+        for i in modelist:
+            print(i)
+        mode: str = input("Modus auswählen: ")
         if mode in ["0", "1"]:
             mode_selection = False
         else:
@@ -38,7 +41,7 @@ def prefix_add(prefix: str) -> None:
             file_name, file_extension = file.stem, file.suffix
             new_file_name = f"{prefix}-{file_name}{file_extension}"
             file.rename(new_file_name)
-            print(f"Umbenennen von {file} zu {new_file_name}")
+            print(f"Umbenannt: {file} -> {new_file_name}")
 
 def prefix_edit(prefix: str) -> None:
     """
@@ -54,7 +57,7 @@ def prefix_edit(prefix: str) -> None:
             nameblocks[0] = prefix
             new_file_name:str = "-".join(nameblocks)+file_extension
             file.rename(new_file_name)
-            print(f"Umbenennen von {file} zu {new_file_name}")
+            print(f"Umbenannt: {file} -> {new_file_name}")
             
 if __name__=="__main__":
     modus:str = mode_selection()
