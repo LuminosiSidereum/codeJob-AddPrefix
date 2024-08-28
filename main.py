@@ -26,6 +26,19 @@ def prefix_input() -> str:
     prefix: str = input("Präfix eingeben: ")
     return prefix
 
+def prefix_add(prefix: str) -> None:
+    """
+    Adds a prefix to all files in the current directory.
+    Args:
+    prefix (str): The prefix to add.
+    """
+    for file in os.listdir():
+        if os.path.isfile(file):
+            file_name, file_extension = os.path.splitext(file)
+            new_file_name = f"{prefix}{file_name}{file_extension}"
+            os.rename(file, new_file_name)
+            print(f"Umbenennen von {file} zu {new_file_name}")
+
 if __name__=="__main__":
     modus:str = mode_selection()
     prefix:str = prefix_input()
@@ -38,3 +51,5 @@ if __name__=="__main__":
         prefix_add(prefix)
     if modus == "1":
         prefix_edit(prefix)
+    
+    input("Drücken Sie eine Enter zum Beenden...")
