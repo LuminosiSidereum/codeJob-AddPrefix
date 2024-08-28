@@ -39,6 +39,21 @@ def prefix_add(prefix: str) -> None:
             os.rename(file, new_file_name)
             print(f"Umbenennen von {file} zu {new_file_name}")
 
+def prefix_edit(prefix: str) -> None:
+    """
+    Edits the prefix of all files in the current directory.
+    Args:
+    prefix (str): The new prefix.
+    """
+    for file in os.listdir():
+        if os.path.isfile(file):
+            file_name, file_extension = os.path.splitext(file)
+            nameblocks:list[str] = file_name.split("-")
+            nameblocks[0] = prefix
+            new_file_name:str = "-".join(nameblocks)+file_extension
+            os.rename(file, new_file_name)
+            print(f"Umbenennen von {file} zu {new_file_name}")
+            
 if __name__=="__main__":
     modus:str = mode_selection()
     prefix:str = prefix_input()
