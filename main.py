@@ -28,30 +28,32 @@ def prefix_input() -> str:
 
 def prefix_add(prefix: str) -> None:
     """
-    Adds a prefix to all files in the current directory.
+    Adds a prefix to all files except python skripts in the current directory.
     Args:
     prefix (str): The prefix to add.
     """
-    for file in os.listdir():
-        if os.path.isfile(file):
-            file_name, file_extension = os.path.splitext(file)
+    for os_file in os.listdir():
+        file = Path(os_file)
+        if os.path.isfile(file) and file.suffix != ".py":
+            file_name, file_extension = file.stem, file.suffix
             new_file_name = f"{prefix}-{file_name}{file_extension}"
-            os.rename(file, new_file_name)
+            file.rename(new_file_name)
             print(f"Umbenennen von {file} zu {new_file_name}")
 
 def prefix_edit(prefix: str) -> None:
     """
-    Edits the prefix of all files in the current directory.
+    Edits the prefix of all files except python skripts in the current directory.
     Args:
     prefix (str): The new prefix.
     """
-    for file in os.listdir():
-        if os.path.isfile(file):
-            file_name, file_extension = os.path.splitext(file)
+    for os_file in os.listdir():
+        file = Path(os_file)
+        if os.path.isfile(file) and file.suffix != ".py":
+            file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             nameblocks[0] = prefix
             new_file_name:str = "-".join(nameblocks)+file_extension
-            os.rename(file, new_file_name)
+            file.rename(new_file_name)
             print(f"Umbenennen von {file} zu {new_file_name}")
             
 if __name__=="__main__":
@@ -67,4 +69,4 @@ if __name__=="__main__":
     if modus == "1":
         prefix_edit(prefix)
     
-    input("Drücken Sie eine Enter zum Beenden...")
+    input("Drücken Sie Enter zum Beenden...")
