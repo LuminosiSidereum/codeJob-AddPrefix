@@ -35,7 +35,7 @@ def prefix_add(prefix: str) -> None:
     for file in os.listdir():
         if os.path.isfile(file):
             file_name, file_extension = os.path.splitext(file)
-            new_file_name = f"{prefix}{file_name}{file_extension}"
+            new_file_name = f"{prefix}-{file_name}{file_extension}"
             os.rename(file, new_file_name)
             print(f"Umbenennen von {file} zu {new_file_name}")
 
