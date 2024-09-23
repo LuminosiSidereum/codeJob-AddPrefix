@@ -14,6 +14,7 @@ def mode_selection() -> str:
         for i in modelist:
             print(i)
         mode: str = input("Modus auswählen: ")
+        mode = mode.strip()
         if mode in ["0", "1"]:
             mode_selection = False
         else:
@@ -22,11 +23,24 @@ def mode_selection() -> str:
 
 def prefix_input() -> str:
     """
-    Prompts the user to enter a prefix.
+    Prompts the user to input a prefix and validates it against a list of forbidden characters.
     Returns:
-    str: The entered prefix.
+        str: A valid prefix string that does not contain any forbidden characters.
+    Forbidden characters:
+        /, \", :, *, ?, <, >, |, ., !, ;, #
+    The function will repeatedly prompt the user until a valid prefix is entered.
     """
-    prefix: str = input("Präfix eingeben: ")
+    
+    forbidden_chars: list[str] = ["/", "\\", ":", "*", "?", "<", ">", "|", ".", "!", ";","#"]
+    valid_perfix: bool = False
+    while not valid_perfix:
+        prefix: str = input("Präfix eingeben: ")
+        prefix = prefix.strip()
+        if any([char in prefix for char in forbidden_chars]):
+            print("Ungültiger Präfix!")
+            print("Verwenden Sie keine der folgenden Zeichen: / \\ : * ? < > | . ! ; # und reservierte Dateinamen")
+        else:
+            valid_perfix = True
     return prefix
 
 def prefix_add(prefix: str) -> None:
