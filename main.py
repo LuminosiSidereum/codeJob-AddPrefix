@@ -51,7 +51,7 @@ def prefix_add(prefix: str) -> None:
     """
     for os_file in os.listdir():
         file = Path(os_file)
-        if os.path.isfile(file) and file.suffix != ".py":
+        if os.path.isfile(file) and file.suffix not in [".py",".exe"]:
             file_name, file_extension = file.stem, file.suffix
             new_file_name = f"{prefix}-{file_name}{file_extension}"
             file.rename(new_file_name)
@@ -65,7 +65,7 @@ def prefix_edit(prefix: str) -> None:
     """
     for os_file in os.listdir():
         file = Path(os_file)
-        if os.path.isfile(file) and file.suffix != ".py":
+        if os.path.isfile(file) and file.suffix not in [".py",".exe"]:
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             nameblocks[0] = prefix
