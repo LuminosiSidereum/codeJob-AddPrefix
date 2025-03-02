@@ -2,7 +2,7 @@
 name = "prefix-manager"
 version = "0.1.0"
 description = "Ein Skript zur Verwaltung von Präfixen für Dateien."
-authors = ["Dein Name <deine.email@example.com>"]
+authors = ["Phillipp Schultheiß <phillipp-schultheiss@web.de>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
