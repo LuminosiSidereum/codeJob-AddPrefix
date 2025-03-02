@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "prefix-manager"
+version = "0.1.0"
+description = "Ein Skript zur Verwaltung von Präfixen für Dateien."
+authors = ["Dein Name <deine.email@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"  # Falls du später Tests hinzufügen willst
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
